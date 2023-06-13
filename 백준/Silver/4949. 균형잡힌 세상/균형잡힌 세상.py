@@ -1,26 +1,45 @@
 import sys
 
 while True:
-    stack = []
-    괄호_dict = {
-        ')' : '(',
-        ']' : '[',
-    }
-    success = True
-    string = sys.stdin.readline().rstrip()
-    if string == ".":
+
+    line = sys.stdin.readline().rstrip()
+
+    if line == '.':
         break
-    for str in string:
-        if str in 괄호_dict:
-            if stack and stack[-1] == 괄호_dict[str]:
-                stack.pop()
-            else:
-                print('no')
+
+    # 스택 생성
+    stack = []
+
+    # {닫는괄호 : 여는괄호} 형식으로 사전 생성
+    dict = {')' : '(', ']' : '['}
+
+    # 결과
+    result = "yes"
+
+    # 문자 검색
+    for char in line:
+
+        # 열린 괄호라면
+        if char in '([':
+            # 스택에 추가
+            stack.append(char)
+
+        # 닫힌 괄호라면
+        if char in ')]':
+
+        # 스택에 열린 괄호가 없다면
+            if (len(stack) == 0):
+                result = "no"
                 break
-        elif str == '(' or str == '[':
-            stack.append(str)
+
+            else:
+        # 스택의 TOP과 짝이 맞지 않는다면
+                if (dict[char] != stack.pop()):
+                    result = "no"
+                    break
+
+# 스택에 열린 괄호가 남아있다면
+    if (len(stack) > 0):
+        print("no")
     else:
-        if stack:
-            print('no')
-        else:
-            print('yes')
+        print(result)
