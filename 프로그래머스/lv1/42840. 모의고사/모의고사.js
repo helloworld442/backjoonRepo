@@ -10,7 +10,7 @@ function solution(answers) {
         if(answers[i] === thr[i % thr.length]) answer[2]++;
     }
     for(i in answer) {
-        if (answer[i] == Math.max(...answer)) ans.push(Number(i)+1)
+        if (answer[i] === Math.max(...answer)) ans.push(Number(i)+1)
     }
     return ans;
 }
