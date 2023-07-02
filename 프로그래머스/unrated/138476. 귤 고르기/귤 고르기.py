@@ -7,4 +7,3 @@ def solution(k, tangerine):
         k -= idx
         answer += 1
     return answer
-    # return len(arr) - answer
