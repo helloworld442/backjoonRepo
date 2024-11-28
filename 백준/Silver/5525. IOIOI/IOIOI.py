@@ -1,27 +1,17 @@
 N = int(input())
-S = int(input())
-M = list(input())
+M = int(input())
+S = input()
+answer, i, count = 0, 0, 0
 
-startP = 0
-endP = 2 * N 
-
-tM = "IOI" + "OI" * (N - 1)
-
-cnt = 0
-
-while endP < S:
-    sL = M[startP : endP + 1]
-    pM = ''.join(sL)
-
-    if pM == tM:
-        cnt += 1
-
-        startP += 2
-        endP += 2
-    
+while i < (M - 1):
+    if S[i:i+3] == 'IOI':
+        i += 2
+        count += 1
+        if count == N:
+            answer += 1
+            count -= 1
     else:
-        startP += 1
-        endP += 1
+        i += 1
+        count = 0
 
-print(cnt)
-
+print(answer)
